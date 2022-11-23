@@ -7,13 +7,15 @@ import { HeroesComponent } from './heroes/heroes.component';
 import { NewHeroComponent } from './new-hero/new-hero.component';
 import { EditHeroComponent } from './edit-hero/edit-hero.component';
 import { HeroeDetailComponent } from './heroe-detail/heroe-detail.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     HeroesComponent,
     NewHeroComponent,
     EditHeroComponent,
-    HeroeDetailComponent
+    HeroeDetailComponent,
+    PageNotFoundComponent
   ],
   imports: [
     CommonModule,
@@ -24,7 +26,8 @@ import { HeroeDetailComponent } from './heroe-detail/heroe-detail.component';
     HeroesComponent,
     NewHeroComponent,
     EditHeroComponent,
-    HeroeDetailComponent
+    HeroeDetailComponent,
+    PageNotFoundComponent
   ]
 })
 export class PagesModule { }
