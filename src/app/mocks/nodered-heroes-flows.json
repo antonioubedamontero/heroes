@@ -1,0 +1,245 @@
+[
+    {
+        "id": "47cafbbe51e2b5e6",
+        "type": "tab",
+        "label": "NodeRed heroes API",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "33e27013a0195de5",
+        "type": "http in",
+        "z": "47cafbbe51e2b5e6",
+        "name": "POST /heroes/query",
+        "url": "/heroes/query",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 290,
+        "y": 200,
+        "wires": [
+            [
+                "1244a49cc1b04347"
+            ]
+        ]
+    },
+    {
+        "id": "1705132047134aa8",
+        "type": "http response",
+        "z": "47cafbbe51e2b5e6",
+        "name": "Response OK",
+        "statusCode": "200",
+        "headers": {},
+        "x": 1100,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "1244a49cc1b04347",
+        "type": "function",
+        "z": "47cafbbe51e2b5e6",
+        "name": "",
+        "func": "// const searchTerm = msg.req.query.searchTerm\nconst pageNumber = Number(msg.payload.pageNumber);\nconst itemsPerPage = Number(msg.payload.itemsPerPage);\n\nconst allHeroes = [];\n\nfor (let index = 0; index < 12; index++) {\n    const heroToAdd = {\n        id: index + 1,\n        name: `Heron ${index}`,\n        gender: (index % 2 === 0) ? 'male' : 'female',\n        isHuman: true,\n        superPowers: [`Superpower ${index}`],\n        team: (index % 2 === 0) ? 'Marvel' : 'DC Comics'\n    }\n    allHeroes.push(heroToAdd);\n}\n\nconst numOfPages = Math.ceil(allHeroes.length / itemsPerPage);\nconst startPos = (pageNumber - 1) * itemsPerPage;\nconst endPos = startPos + itemsPerPage;\n\nconst heroes = allHeroes.slice(startPos, endPos);\n\nmsg.payload={\n    heroes,\n    paginationResult: {\n        page: pageNumber,\n        itemsPerPage,\n        numOfItems: allHeroes.length\n    }\n};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 680,
+        "y": 200,
+        "wires": [
+            [
+                "1705132047134aa8"
+            ]
+        ]
+    },
+    {
+        "id": "42d8a376fd07ea33",
+        "type": "function",
+        "z": "47cafbbe51e2b5e6",
+        "name": "",
+        "func": "// const id = msg.req.params.id;\nmsg.payload={\n    id: '1',\n    name: 'Magneto',\n    gender: 'male',\n    isHuman: true,\n    superPowers: [\n        'gravity', 'magnetism', 'intelligence'\n    ],\n    team: 'Brotherhood of Mutants'\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 700,
+        "y": 300,
+        "wires": [
+            [
+                "4dc3247294d03049"
+            ]
+        ]
+    },
+    {
+        "id": "0a5f68273def50b9",
+        "type": "http in",
+        "z": "47cafbbe51e2b5e6",
+        "name": "GET /heroes/:id",
+        "url": "/heroes/:id",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 300,
+        "y": 300,
+        "wires": [
+            [
+                "42d8a376fd07ea33"
+            ]
+        ]
+    },
+    {
+        "id": "4dc3247294d03049",
+        "type": "http response",
+        "z": "47cafbbe51e2b5e6",
+        "name": "Response OK",
+        "statusCode": "200",
+        "headers": {},
+        "x": 1120,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "67e4c47c07ac4236",
+        "type": "function",
+        "z": "47cafbbe51e2b5e6",
+        "name": "",
+        "func": "msg.payload = {\n    id: 1,\n    name: 'name modified',\n    gender: 'male',\n    isHuman: true,\n    superPowers: [\n        'super powers modified'\n    ],\n    team: 'team modified'\n};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 700,
+        "y": 400,
+        "wires": [
+            [
+                "8a53a936b42b2e96"
+            ]
+        ]
+    },
+    {
+        "id": "50b503efbe37c9df",
+        "type": "http in",
+        "z": "47cafbbe51e2b5e6",
+        "name": "PUT /heroes/:id",
+        "url": "/heroes/:id",
+        "method": "put",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 300,
+        "y": 400,
+        "wires": [
+            [
+                "67e4c47c07ac4236"
+            ]
+        ]
+    },
+    {
+        "id": "8a53a936b42b2e96",
+        "type": "http response",
+        "z": "47cafbbe51e2b5e6",
+        "name": "response OK",
+        "statusCode": "200",
+        "headers": {},
+        "x": 1130,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "5b4aac88b4b3673b",
+        "type": "http in",
+        "z": "47cafbbe51e2b5e6",
+        "name": "DELETE /heroes/:id",
+        "url": "/heroes/:id",
+        "method": "delete",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 310,
+        "y": 500,
+        "wires": [
+            [
+                "ef8e59210abcc328"
+            ]
+        ]
+    },
+    {
+        "id": "1e3728371ab96482",
+        "type": "http response",
+        "z": "47cafbbe51e2b5e6",
+        "name": "Delete OK",
+        "statusCode": "204",
+        "headers": {},
+        "x": 1110,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "ef8e59210abcc328",
+        "type": "function",
+        "z": "47cafbbe51e2b5e6",
+        "name": "",
+        "func": "msg.payload = {};\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 700,
+        "y": 500,
+        "wires": [
+            [
+                "1e3728371ab96482"
+            ]
+        ]
+    },
+    {
+        "id": "a1689ba01faa0488",
+        "type": "function",
+        "z": "47cafbbe51e2b5e6",
+        "name": "",
+        "func": "msg.payload = {\n    id: 1,\n    name: 'new name',\n    gender: 'male',\n    isHuman: true,\n    superPowers: [\n        'new super power'\n    ],\n    team: 'new team'\n};\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 700,
+        "y": 600,
+        "wires": [
+            [
+                "cd274b433d11312f"
+            ]
+        ]
+    },
+    {
+        "id": "87c066bf59d50d8b",
+        "type": "http in",
+        "z": "47cafbbe51e2b5e6",
+        "name": "POST /heroes",
+        "url": "/heroes",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 330,
+        "y": 600,
+        "wires": [
+            [
+                "a1689ba01faa0488"
+            ]
+        ]
+    },
+    {
+        "id": "cd274b433d11312f",
+        "type": "http response",
+        "z": "47cafbbe51e2b5e6",
+        "name": "Create OK",
+        "statusCode": "201",
+        "headers": {},
+        "x": 1130,
+        "y": 600,
+        "wires": []
+    }
+]

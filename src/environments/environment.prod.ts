@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  // Fake web
+  baseUrl: 'http://miweb.com/api'
 };
