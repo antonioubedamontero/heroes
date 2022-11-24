@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment as env } from '../../environments/environment';
 
 import { Observable } from 'rxjs';
-import { Hero, HeroModified, NewHero } from '../interfaces';
+import { Hero, HeroModified, NewHero, PageList, Pagination } from '../interfaces';
 
 const baseUrl = env.baseUrl;
 
@@ -14,8 +14,11 @@ export class HeroesService {
 
   constructor(private http: HttpClient) { }
 
-  getHeroes = (): Observable<Hero[]> => {
-    return this.http.get<Hero[]>(`${baseUrl}/heroes`);
+  getHeroes = (pagination: Pagination, searchTerm?: string): Observable<PageList> => {
+    if (searchTerm) {
+      return this.http.post<PageList>(`${baseUrl}/heroes/query`, pagination, { params: { searchTerm } });
+    } 
+    return this.http.post<PageList>(`${baseUrl}/heroes/query`, pagination);
   }
 
   getHero = (id: string): Observable<Hero> => {

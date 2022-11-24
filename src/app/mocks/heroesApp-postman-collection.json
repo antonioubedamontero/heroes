@@ -6,19 +6,41 @@
 	},
 	"item": [
 		{
-			"name": "GET Heroes",
+			"name": "POST Heroes (query)",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
 			"request": {
-				"method": "GET",
-				"header": [],
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"pageNumber\": 1,\r\n    \"itemsPerPage\": 5\r\n}"
+				},
 				"url": {
-					"raw": "http://localhost:1880/heroes",
+					"raw": "http://localhost:1880/heroes/query?searchTerm=mag",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "1880",
 					"path": [
-						"heroes"
+						"heroes",
+						"query"
+					],
+					"query": [
+						{
+							"key": "searchTerm",
+							"value": "mag"
+						}
 					]
 				}
 			},
