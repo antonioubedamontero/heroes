@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EditHeroComponent } from './edit-hero.component';
 
-describe('EditHeroComponent', () => {
+describe('- EditHeroComponent (Page for edit an hero by it\'s id)', () => {
   let component: EditHeroComponent;
   let fixture: ComponentFixture<EditHeroComponent>;
 
@@ -17,7 +17,7 @@ describe('EditHeroComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('✔️ EditHeroComponent has been created', () => {
     expect(component).toBeTruthy();
   });
 });

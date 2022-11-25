@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HeroeDetailComponent } from './heroe-detail.component';
 
-describe('HeroeDetailComponent', () => {
+describe('- HeroeDetailComponent (Page with hero details)', () => {
   let component: HeroeDetailComponent;
   let fixture: ComponentFixture<HeroeDetailComponent>;
 
@@ -17,7 +17,7 @@ describe('HeroeDetailComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('✔️ HeroDetailsComponent has been created', () => {
     expect(component).toBeTruthy();
   });
 });

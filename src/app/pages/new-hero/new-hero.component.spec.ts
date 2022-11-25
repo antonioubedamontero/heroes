@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NewHeroComponent } from './new-hero.component';
 
-describe('NewHeroComponent', () => {
+describe('- NewHeroComponent (Page for add a new hero)', () => {
   let component: NewHeroComponent;
   let fixture: ComponentFixture<NewHeroComponent>;
 
@@ -17,7 +17,7 @@ describe('NewHeroComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('✔️ NewHeroComponent has been created', () => {
     expect(component).toBeTruthy();
   });
 });
