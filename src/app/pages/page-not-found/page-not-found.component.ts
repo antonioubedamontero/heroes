@@ -1,15 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-page-not-found',
   templateUrl: './page-not-found.component.html',
   styleUrls: ['./page-not-found.component.scss']
 })
-export class PageNotFoundComponent implements OnInit {
+export class PageNotFoundComponent {
+  title: string;
+  explanation: string;
+  goHome: string;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private router: Router) {
+    this.title = 'Página no encontrada';
+    this.explanation = 'La página que estaba buscando no existe'
+    this.goHome = 'Ir a página de inicio'; 
   }
 
+  navigateToHomePage(): void {
+    this.router.navigateByUrl('/heroes');
+  }
 }

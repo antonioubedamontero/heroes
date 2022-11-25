@@ -1,1 +1,20 @@
-<p>page-not-found</p>
+<div class="page-layout" 
+    fxLayout="row" fxLayoutAlign="center center">
+    <mat-card fxFlex.xs="95" fxFlex.sm="60" fxFlex.gt-sm="50"
+              fxLayout="column" fxLayoutGap="25px">
+        <strong class="title" fxLayout="row" fxLayoutAlign="center center">
+          <span id="title">{{ title }}</span>
+        </strong>
+
+        <div fxLayout="row" fxLayoutAlign="center center">
+          <span id="explanation">{{ explanation }}</span>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="center center">
+            <button mat-raised-button color="primary"
+              (click)="navigateToHomePage()">
+              {{ goHome }}
+            </button>
+        </div>
+    </mat-card>      
+</div>
