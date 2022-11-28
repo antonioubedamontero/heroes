@@ -8,17 +8,19 @@ export class HeroesPipe implements PipeTransform {
   transform(colId: string): string {
     switch (colId) {
       case 'id':
-        return 'Id'
+        return 'Id';
       case 'name':
-        return 'Nombre'
+        return 'Nombre';
       case 'gender':
-        return 'Género'
+        return 'Género';
       case 'isHuman':
-        return 'Humano'
+        return 'Humano';
       case 'superPowers':
         return 'Súper Poderes';
       case 'team':
         return 'Equipo';
+      case 'options':
+        return 'Opciones';
       default:
         return 'Indefinido';
     }

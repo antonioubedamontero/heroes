@@ -7,12 +7,10 @@ import { BaseModule } from './base/base.module';
 import { PagesModule } from './pages/pages.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HeroesPipe } from './pipes/heroes.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeroesPipe
+    AppComponent
   ],
   imports: [
     BrowserModule,

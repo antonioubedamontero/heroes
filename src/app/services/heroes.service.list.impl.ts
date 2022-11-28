@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Hero, HeroModified, NewHero, PageList, Pagination } from '../interfaces';
+import { HEROES_DATA_MOCK as mock } from '../mocks/heroes.data.mock';
 import { HeroesService } from './heroes.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HeroesServiceListImpl extends HeroesService{
-  heroes: Hero[] = [];
+  // heroes: Hero[] = [];
+  heroes: Hero[] = this.loadFakeData();
 
   override getHeroes = (pagination: Pagination, searchTerm?: string): Observable<PageList> => {
     const filteredHeroes = !!searchTerm ? 
@@ -58,5 +60,23 @@ export class HeroesServiceListImpl extends HeroesService{
     };
     this.heroes.push(newHero);
     return of(newHero);
+  }
+
+  private loadFakeData(): Hero[] {
+    const hero = mock.hero as unknown as Hero;
+    return [
+      { ...hero, id: '1' },
+      { ...hero, id: '2' },
+      { ...hero, id: '3' },
+      { ...hero, id: '4' },
+      { ...hero, id: '5' },
+      { ...hero, id: '6' },
+      { ...hero, id: '7' },
+      { ...hero, id: '8' },
+      { ...hero, id: '9' },
+      { ...hero, id: '10' },
+      { ...hero, id: '11' },
+      { ...hero, id: '12' }
+    ];
   }
 }
