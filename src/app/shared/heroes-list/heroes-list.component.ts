@@ -17,7 +17,7 @@ export class HeroesListComponent implements OnChanges, OnDestroy {
   heroes: Hero[] = [];
   pagination: Pagination;
   paginationResult!: PaginationResult;
-  displayedColumns: string[] = ['id', 'name', 'gender', 'isHuman', 'superPowers', 'team', 'options'];
+  displayedColumns: string[] = ['name', 'gender', 'isHuman', 'superPowers', 'team', 'options'];
 
   getHeroesSubscription!: Subscription;
   deleteHeroSubscription!: Subscription;

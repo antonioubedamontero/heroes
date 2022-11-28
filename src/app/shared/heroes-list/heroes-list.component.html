@@ -1,9 +1,13 @@
 <div fxLayout="column">
-  <mat-table [dataSource]="heroes" class="mat-elevation-z2">
+  <mat-table id="heroesTable" [dataSource]="heroes" class="mat-elevation-z2">
       <ng-container *ngFor="let columnName of displayedColumns" 
         [matColumnDef]="columnName">
         <mat-header-cell *matHeaderCellDef>
-          {{ columnName | heroesPipe }} 
+          <div *ngIf="columnName === 'options'"></div>
+
+          <div *ngIf="columnName !== 'options'">
+            {{ columnName | heroesPipe }} 
+          </div>
         </mat-header-cell>
         <mat-cell *matCellDef="let element">
           <div *ngIf="columnName !== 'superPowers' &&
