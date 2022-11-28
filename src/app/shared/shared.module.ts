@@ -1,17 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeroFilterComponent } from './hero-filter/hero-filter.component';
+
 import { BaseModule } from '../base/base.module';
-4
+import { PipesModule } from '../pipes/pipes.module';
+import { HeroFilterComponent } from './hero-filter/hero-filter.component';
+import { HeroesListComponent } from './heroes-list/heroes-list.component';
+
 @NgModule({
   declarations: [
-    HeroFilterComponent
+    HeroFilterComponent,
+    HeroesListComponent
   ],
   imports: [
     BaseModule,
-    CommonModule
+    CommonModule,
+    PipesModule
   ],
   exports: [
+    HeroesListComponent,
     HeroFilterComponent
   ]
 })

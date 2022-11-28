@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { BaseModule } from './base/base.module';
 
 describe('- AppComponent (main app compontent)', () => {
   let fixture: ComponentFixture<AppComponent>;
@@ -9,7 +10,8 @@ describe('- AppComponent (main app compontent)', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        BaseModule
       ],
       declarations: [
         AppComponent

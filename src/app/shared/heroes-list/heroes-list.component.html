@@ -1,0 +1,52 @@
+<div fxLayout="column">
+  <mat-table id="heroesTable" [dataSource]="heroes" class="mat-elevation-z2">
+      <ng-container *ngFor="let columnName of displayedColumns" 
+        [matColumnDef]="columnName">
+        <mat-header-cell *matHeaderCellDef>
+          <div *ngIf="columnName === 'options'"></div>
+
+          <div *ngIf="columnName !== 'options'">
+            {{ columnName | heroesPipe }} 
+          </div>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <div *ngIf="columnName !== 'superPowers' &&
+                      columnName !== 'options'">
+            {{ element[columnName] }}
+          </div>
+
+          <div *ngIf="columnName === 'superPowers'">
+            <ul>
+              <li *ngFor="let superPower of element['superPowers']">
+                {{ superPower }}
+              </li>
+            </ul>
+          </div>
+
+          <div fxLayout="row" fxLayoutGap="15px" 
+            *ngIf="columnName === 'options'">
+
+            <button mat-raised-button color="primary"
+              (click)="editItem(element)">
+              <mat-icon>edit</mat-icon>
+            </button>
+
+            <button mat-raised-button color="warn"
+              (click)="deleteItem(element.id)">
+              <mat-icon>delete_outline</mat-icon>
+            </button>
+          </div>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  
+  <mat-paginator [length]="paginationResult.numOfItems"
+              [pageSize]="pagination.itemsPerPage"
+              [pageSizeOptions]="[5, 10, 25]"
+              [pageIndex]="pagination.pageNumber"
+              (page)="handlePaginationChanges($event)">
+  </mat-paginator>
+</div>
