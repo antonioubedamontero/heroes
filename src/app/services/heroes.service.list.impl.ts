@@ -3,6 +3,7 @@ import { Observable, of } from 'rxjs';
 import { Hero, HeroModified, NewHero, PageList, Pagination } from '../interfaces';
 import { HEROES_DATA_MOCK as mock } from '../mocks/heroes.data.mock';
 import { HeroesService } from './heroes.service';
+import { Md5 } from 'ts-md5';
 
 @Injectable({
   providedIn: 'root'
@@ -46,16 +47,13 @@ export class HeroesServiceListImpl extends HeroesService{
   }
 
   override deleteHero = (id: string): Observable<any> => {
-    this.heroes = this.heroes.filter(hero => hero.id !== id)?.map((hero, index) => {
-      hero.id = String(index + 1);
-      return hero;
-    });
+    this.heroes = this.heroes.filter(hero => hero.id !== id);
     return of({});
   }
 
   override createHero = (newHeroParm: NewHero): Observable<Hero> => {
     const newHero = {
-      id: String(this.heroes.length + 1),  
+      id: Md5.hashStr(newHeroParm.name),  
       ...newHeroParm,
     };
     this.heroes.push(newHero);
@@ -65,18 +63,18 @@ export class HeroesServiceListImpl extends HeroesService{
   private loadFakeData(): Hero[] {
     const hero = mock.hero as unknown as Hero;
     return [
-      { ...hero, id: '1' },
-      { ...hero, id: '2' },
-      { ...hero, id: '3' },
-      { ...hero, id: '4' },
-      { ...hero, id: '5' },
-      { ...hero, id: '6' },
-      { ...hero, id: '7' },
-      { ...hero, id: '8' },
-      { ...hero, id: '9' },
-      { ...hero, id: '10' },
-      { ...hero, id: '11' },
-      { ...hero, id: '12' }
+      { ...hero, name: 'hero 1', id: Md5.hashStr('hero 1') },
+      { ...hero, name: 'hero 2', id: Md5.hashStr('hero 2') },
+      { ...hero, name: 'hero 3', id: Md5.hashStr('hero 3') },
+      { ...hero, name: 'hero 4', id: Md5.hashStr('hero 4') },
+      { ...hero, name: 'hero 5', id: Md5.hashStr('hero 5') },
+      { ...hero, name: 'hero 6', id: Md5.hashStr('hero 6') },
+      { ...hero, name: 'hero 7', id: Md5.hashStr('hero 7') },
+      { ...hero, name: 'hero 8', id: Md5.hashStr('hero 8') },
+      { ...hero, name: 'hero 9', id: Md5.hashStr('hero 9') },
+      { ...hero, name: 'hero 10', id: Md5.hashStr('hero 10') },
+      { ...hero, name: 'hero 11', id: Md5.hashStr('hero 11') },
+      { ...hero, name: 'hero 12', id: Md5.hashStr('hero 12') }
     ];
   }
 }
