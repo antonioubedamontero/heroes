@@ -2,11 +2,11 @@ table {
     width: 100%;
 }
 
-::ng-deep {
-    #heroesTable mat-header-cell, mat-cell {
-        padding: 0 !important;
-    }
-}
+// ::ng-deep {
+//     #heroesTable mat-header-cell, mat-cell {
+//         padding: 0 !important;
+//     }
+// }
 
 ul {
     padding-left: 0px;

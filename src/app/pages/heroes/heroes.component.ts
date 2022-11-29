@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-heroes',
   templateUrl: './heroes.component.html',
   styleUrls: ['./heroes.component.scss']
 })
-export class HeroesComponent implements OnInit {
+export class HeroesComponent {
+  filterText: string = '';
 
   constructor() { }
 
-  ngOnInit(): void {
+  doFilter(searchTerm: string): void {
+    this.filterText = searchTerm;
   }
-
 }
