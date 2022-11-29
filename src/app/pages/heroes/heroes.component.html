@@ -1,1 +1,4 @@
-<p>heroes</p>
+<div class="container">
+    <app-hero-filter (filterEmitted)="doFilter($event)"></app-hero-filter>
+    <app-heroes-list [filterText]="filterText"></app-heroes-list>
+</div>

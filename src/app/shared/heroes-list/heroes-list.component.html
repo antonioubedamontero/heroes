@@ -1,5 +1,6 @@
 <div fxLayout="column">
-  <mat-table id="heroesTable" [dataSource]="heroes" class="mat-elevation-z2">
+  <mat-table id="heroesTable" (window:resize)="resizeTable()" 
+      [dataSource]="heroes" class="mat-elevation-z2">
       <ng-container *ngFor="let columnName of displayedColumns" 
         [matColumnDef]="columnName">
         <mat-header-cell *matHeaderCellDef>

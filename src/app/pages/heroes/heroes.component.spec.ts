@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedModule } from '../../shared/shared.module';
 
 import { HeroesComponent } from './heroes.component';
 
@@ -8,7 +10,13 @@ describe('- HeroesComponent (list of hero page)', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HeroesComponent ]
+      declarations: [ 
+        HeroesComponent 
+      ],
+      imports: [
+        BrowserAnimationsModule,
+        SharedModule
+      ]
     })
     .compileComponents();
 
@@ -19,5 +27,10 @@ describe('- HeroesComponent (list of hero page)', () => {
 
   it('✔️ HeroesComponent has been created', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('✔️ Changes filter text when receiving a text from filter', () => {
+    component.doFilter('my text');
+    expect(component.filterText).toBe('my text');
   });
 });
