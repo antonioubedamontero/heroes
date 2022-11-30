@@ -12,8 +12,13 @@
         </mat-header-cell>
         <mat-cell *matCellDef="let element">
           <div *ngIf="columnName !== 'superPowers' &&
-                      columnName !== 'options'">
+                      columnName !== 'options' &&
+                      columnName !== 'isHuman'">
             {{ element[columnName] }}
+          </div>
+
+          <div *ngIf="columnName === 'isHuman'">
+            {{ element[columnName] ? 'Sí' : 'No' }}
           </div>
 
           <div *ngIf="columnName === 'superPowers'">

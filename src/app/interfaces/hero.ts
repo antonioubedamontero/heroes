@@ -1,4 +1,4 @@
-export type Gender = 'male' | 'female' | 'other';
+export type Gender = 'masculino' | 'femenino' | 'otro';
 
 export interface Hero {
     id: string,

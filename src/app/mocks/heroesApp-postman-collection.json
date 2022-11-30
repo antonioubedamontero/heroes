@@ -73,7 +73,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"name modified\",\r\n    \"gender\": \"male\",\r\n    \"isHuman\": true,\r\n    \"superPowers\": [\"super powers modified\"],\r\n    \"team\": \"team modified\"\r\n}"
+					"raw": "{\r\n    \"name\": \"nombre modificado\",\r\n    \"gender\": \"masculino\",\r\n    \"isHuman\": true,\r\n    \"superPowers\": [\"súper poderes modificados\"],\r\n    \"team\": \"equipo modificado\"\r\n}"
 				},
 				"url": {
 					"raw": "http://localhost:1880/heroes/1",
@@ -117,7 +117,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"new name\",\r\n    \"gender\": \"male\",\r\n    \"isHuman\": true,\r\n    \"superPowers\": [\r\n        \"new super power\"\r\n    ],\r\n    \"team\": \"new team\"\r\n}"
+					"raw": "{\r\n    \"name\": \"nuevo nombre\",\r\n    \"gender\": \"masculino\",\r\n    \"isHuman\": true,\r\n    \"superPowers\": [\r\n        \"nuevo súper poder\"\r\n    ],\r\n    \"team\": \"nuevo equipo\"\r\n}"
 				},
 				"url": {
 					"raw": "http://localhost:1880/heroes",

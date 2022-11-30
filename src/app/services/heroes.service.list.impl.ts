@@ -63,18 +63,18 @@ export class HeroesServiceListImpl extends HeroesService{
   private loadFakeData(): Hero[] {
     const hero = mock.hero as unknown as Hero;
     return [
-      { ...hero, name: 'hero 1', id: Md5.hashStr('hero 1') },
-      { ...hero, name: 'hero 2', id: Md5.hashStr('hero 2') },
-      { ...hero, name: 'hero 3', id: Md5.hashStr('hero 3') },
-      { ...hero, name: 'hero 4', id: Md5.hashStr('hero 4') },
-      { ...hero, name: 'hero 5', id: Md5.hashStr('hero 5') },
-      { ...hero, name: 'hero 6', id: Md5.hashStr('hero 6') },
-      { ...hero, name: 'hero 7', id: Md5.hashStr('hero 7') },
-      { ...hero, name: 'hero 8', id: Md5.hashStr('hero 8') },
-      { ...hero, name: 'hero 9', id: Md5.hashStr('hero 9') },
-      { ...hero, name: 'hero 10', id: Md5.hashStr('hero 10') },
-      { ...hero, name: 'hero 11', id: Md5.hashStr('hero 11') },
-      { ...hero, name: 'hero 12', id: Md5.hashStr('hero 12') }
+      { ...hero, name: 'héroe 1', id: Md5.hashStr('héroe 1') },
+      { ...hero, name: 'héroe 2', id: Md5.hashStr('héroe 2') },
+      { ...hero, name: 'héro 3', id: Md5.hashStr('héro 3') },
+      { ...hero, name: 'héroe 4', id: Md5.hashStr('héroe 4') },
+      { ...hero, name: 'héroe 5', id: Md5.hashStr('héroe 5') },
+      { ...hero, name: 'héroe 6', id: Md5.hashStr('héroe 6') },
+      { ...hero, name: 'héroe 7', id: Md5.hashStr('héroe 7') },
+      { ...hero, name: 'héroe 8', id: Md5.hashStr('héroe 8') },
+      { ...hero, name: 'héroe 9', id: Md5.hashStr('héroe 9') },
+      { ...hero, name: 'héroe 10', id: Md5.hashStr('héroe 10') },
+      { ...hero, name: 'héroe 11', id: Md5.hashStr('héroe 11') },
+      { ...hero, name: 'héroe 12', id: Md5.hashStr('héroe 12') }
     ];
   }
 }
