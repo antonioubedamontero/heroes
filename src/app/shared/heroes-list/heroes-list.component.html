@@ -27,6 +27,11 @@
           <div fxLayout="row" fxLayoutGap="15px" 
             *ngIf="columnName === 'options'">
 
+            <button mat-raised-button
+              (click)="showHero(element.id)">
+              <mat-icon>zoom_in</mat-icon>
+            </button>
+
             <button mat-raised-button color="primary"
               (click)="editItem(element)">
               <mat-icon>edit</mat-icon>

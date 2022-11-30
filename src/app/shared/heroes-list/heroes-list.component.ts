@@ -6,6 +6,8 @@ import { PageList, Pagination } from '../../interfaces';
 import { PageEvent } from '@angular/material/paginator';
 import { PaginationResult } from '../../interfaces/pagination-result';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { HeroDetailComponent } from '../hero-detail/hero-detail.component';
+import { MatDialog } from '@angular/material/dialog';
 
 const SNACK_BAR_DURATION_IN_SG = 2;
 export const LG_COLUMNS = ['name', 'gender', 'isHuman', 'superPowers', 'team', 'options'];
@@ -29,8 +31,9 @@ export class HeroesListComponent implements OnChanges, OnInit, OnDestroy {
   getHeroesSubscription!: Subscription;
   deleteHeroSubscription!: Subscription;
 
-  constructor(private heroesService: HeroesServiceListImpl,
-              private snackBar: MatSnackBar) { }
+  constructor(private dialog: MatDialog,
+              private snackBar: MatSnackBar,
+              private heroesService: HeroesServiceListImpl) { }
 
   ngOnInit(): void {
     this.resizeTable();
@@ -55,6 +58,12 @@ export class HeroesListComponent implements OnChanges, OnInit, OnDestroy {
           this.heroes = pageList.heroes;
           this.paginationResult = pageList.paginationResult;
         });
+  }
+
+  showHero(id: string): void {
+    this.dialog.open(HeroDetailComponent, {
+       data: { id },
+    });
   }
 
   editItem(hero: Hero): void {
