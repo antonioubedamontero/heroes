@@ -1,11 +1,16 @@
+import { of } from "rxjs";
+
+let returnMatDialogClose = true;
+
 export class MatDialogMock {
-    returnValue = '';
     open() {
       return {
-        afterClosed: () => this.returnValue
+        afterClosed: () => of(returnMatDialogClose)
       };
     }
     close(value = '') { }
 };
 
-  
+export const setMatDialogCloseValue = (value: any): void => {
+  returnMatDialogClose = value;
+}
