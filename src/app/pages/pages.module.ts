@@ -6,7 +6,6 @@ import { SharedModule } from '../shared/shared.module';
 import { HeroesComponent } from './heroes/heroes.component';
 import { NewHeroComponent } from './new-hero/new-hero.component';
 import { EditHeroComponent } from './edit-hero/edit-hero.component';
-import { HeroeDetailComponent } from './heroe-detail/heroe-detail.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
@@ -14,7 +13,6 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     HeroesComponent,
     NewHeroComponent,
     EditHeroComponent,
-    HeroeDetailComponent,
     PageNotFoundComponent
   ],
   imports: [
@@ -26,7 +24,6 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     HeroesComponent,
     NewHeroComponent,
     EditHeroComponent,
-    HeroeDetailComponent,
     PageNotFoundComponent
   ]
 })

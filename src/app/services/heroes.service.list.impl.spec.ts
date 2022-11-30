@@ -23,18 +23,18 @@ describe('- HeroesServiceListImpl (Service implementation with list that consume
     service = TestBed.inject(HeroesServiceListImpl);
     http = TestBed.inject(HttpClient);
     service.heroes = [
-        { ...mock.hero as unknown as Hero, id: '1', name: 'hero 1' },
-        { ...mock.hero as unknown as Hero, id: '2', name: 'hero 2' },
-        { ...mock.hero as unknown as Hero, id: '3', name: 'hero 3' },
-        { ...mock.hero as unknown as Hero, id: '4', name: 'hero 4' },
-        { ...mock.hero as unknown as Hero, id: '5', name: 'hero 5' },
-        { ...mock.hero as unknown as Hero, id: '6', name: 'hero 6' },
-        { ...mock.hero as unknown as Hero, id: '7', name: 'hero 7' },
-        { ...mock.hero as unknown as Hero, id: '8', name: 'hero 8' },
-        { ...mock.hero as unknown as Hero, id: '9', name: 'hero 9' },
-        { ...mock.hero as unknown as Hero, id: '10', name: 'hero 10'},
-        { ...mock.hero as unknown as Hero, id: '11', name: 'hero 11'},
-        { ...mock.hero as unknown as Hero, id: '12', name: 'hero 12'}
+        { ...mock.hero as unknown as Hero, id: '1', name: 'héroe 1' },
+        { ...mock.hero as unknown as Hero, id: '2', name: 'héroe 2' },
+        { ...mock.hero as unknown as Hero, id: '3', name: 'héroe 3' },
+        { ...mock.hero as unknown as Hero, id: '4', name: 'héroe 4' },
+        { ...mock.hero as unknown as Hero, id: '5', name: 'héroe 5' },
+        { ...mock.hero as unknown as Hero, id: '6', name: 'héroe 6' },
+        { ...mock.hero as unknown as Hero, id: '7', name: 'hereo 7' },
+        { ...mock.hero as unknown as Hero, id: '8', name: 'héroe 8' },
+        { ...mock.hero as unknown as Hero, id: '9', name: 'héroe 9' },
+        { ...mock.hero as unknown as Hero, id: '10', name: 'héro 10'},
+        { ...mock.hero as unknown as Hero, id: '11', name: 'héroe 11'},
+        { ...mock.hero as unknown as Hero, id: '12', name: 'héroe 12'}
     ];
   });
 
@@ -57,7 +57,7 @@ describe('- HeroesServiceListImpl (Service implementation with list that consume
     });
 
     it('✔️ getHeroes retrieves heroes with match with passed pattern', (done) => {
-      const searchTerm = 'ro 5';
+      const searchTerm = 'roe 5';
       const pagination: Pagination = {
         pageNumber: 1,
         itemsPerPage: 5
@@ -78,7 +78,7 @@ describe('- HeroesServiceListImpl (Service implementation with list that consume
         (hero: Hero) => {
             expect(hero).toBeDefined();
             expect(hero.id).toBe('3');
-            expect(hero.name).toBe('hero 3');
+            expect(hero.name).toBe('héroe 3');
             done();
         }
     )
@@ -88,19 +88,19 @@ describe('- HeroesServiceListImpl (Service implementation with list that consume
     const id = '2';
     const heroModified: HeroModified = {
         name: 'Black Widow',
-        superPowers: ['athletic', 'expert using weapons'],
-        team: 'Avengers'
+        superPowers: ['atlética', 'experta usando armas'],
+        team: 'Los Vengandores'
     }
     service.updateHero(id, heroModified).subscribe((hero: Hero) => {
-        const newHero: Hero = {
+        const expectedHero: Hero = {
             id: '2',
             name: 'Black Widow',
-            gender: 'male',
+            gender: 'masculino',
             isHuman: true,
-            superPowers: ['athletic', 'expert using weapons'],
-            team: 'Avengers'
+            superPowers: ['atlética', 'experta usando armas'],
+            team: 'Los Vengandores'
         };
-        expect(service.heroes).toContain(newHero);
+        expect(service.heroes).toContain(expectedHero);
         done();
     });
   });

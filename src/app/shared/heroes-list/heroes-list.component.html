@@ -12,8 +12,13 @@
         </mat-header-cell>
         <mat-cell *matCellDef="let element">
           <div *ngIf="columnName !== 'superPowers' &&
-                      columnName !== 'options'">
+                      columnName !== 'options' &&
+                      columnName !== 'isHuman'">
             {{ element[columnName] }}
+          </div>
+
+          <div *ngIf="columnName === 'isHuman'">
+            {{ element[columnName] ? 'Sí' : 'No' }}
           </div>
 
           <div *ngIf="columnName === 'superPowers'">
@@ -26,6 +31,11 @@
 
           <div fxLayout="row" fxLayoutGap="15px" 
             *ngIf="columnName === 'options'">
+
+            <button mat-raised-button
+              (click)="showHero(element.id)">
+              <mat-icon>zoom_in</mat-icon>
+            </button>
 
             <button mat-raised-button color="primary"
               (click)="editItem(element)">

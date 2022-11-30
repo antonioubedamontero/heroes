@@ -2,56 +2,56 @@ export const HEROES_DATA_MOCK = {
     hero: { 
         id: '1',
         name: 'Magneto',
-        gender: 'male',
+        gender: 'masculino',
         isHuman: true,
         superPowers: [
-            'gravity', 'magnetism', 'intelligence'
+            'gravedad', 'magnetismo', 'inteligencia'
         ],
-        team: 'Brotherhood of Mutants'
+        team: 'Hermandad de Mutantes'
     },
     pageList: {
         heroes: [
             { 
                 id: '1',
                 name: 'Magneto',
-                gender: 'male',
+                gender: 'masculino',
                 isHuman: true,
                 superPowers: [
-                    'gravity', 'magnetism', 'intelligence'
+                    'gravedad', 'magnetismo', 'inteligencia'
                 ],
-                team: 'Brotherhood of Mutants'
+                team: 'Hermandad de Mutantes'
             },
             { 
                 id: '2',
                 name: 'Wonder Woman',
-                gender: 'female',
+                gender: 'femenino',
                 isHuman: true,
                 superPowers: [
-                    'strong'
+                    'fuerza'
                 ],
-                team: 'League of Justice'
+                team: 'Liga de la Justicia'
             }       
         ],
         paginationResult: {
             page: 1,
-            itemsPerPage: 25,
+            itemsPerPage: 5,
             numOfItems: 2
         }
     },
     pagination: {
         pageNumber: 1,
-        itemsPerPage: 25
+        itemsPerPage: 5
     },
     heroModified: {
-        name: 'Hero name modified',
-        gender: 'other',
+        name: 'Nombre del héroe modificado',
+        gender: 'otro',
         isHuman: false,
-        superPowers: ['Other super power']
+        superPowers: ['otro super poder']
     },
     newHero: {
-        name: 'A new Hero',
-        gender: 'male',
+        name: 'Un nuevo héroe',
+        gender: 'masculino',
         isHuman: true,
-        superPowers: ['very strong']
+        superPowers: ['nuevo super poder']
     }
 };

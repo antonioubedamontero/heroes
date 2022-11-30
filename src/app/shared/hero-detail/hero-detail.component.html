@@ -1,0 +1,15 @@
+<div *ngIf="heroData.length > 0">
+    <div fxLayout="row" fxLayoutAlign="end start">
+        <button id="close" mat-flat-button tabindex="-1" (click)="closeDialog()">
+            <mat-icon fontIcon="close"></mat-icon>
+        </button>
+    </div>
+    
+    <mat-dialog-content>
+        <div *ngFor="let heroField of heroData"
+            fxLayout="column" class="padding-y-5">
+            <strong>{{ heroField.key }}</strong>
+            <span>{{ heroField.value }}</span>
+        </div>
+    </mat-dialog-content>
+</div>
