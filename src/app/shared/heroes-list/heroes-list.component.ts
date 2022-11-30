@@ -8,6 +8,7 @@ import { PaginationResult } from '../../interfaces/pagination-result';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HeroDetailComponent } from '../hero-detail/hero-detail.component';
 import { MatDialog } from '@angular/material/dialog';
+import { DeleteHeroModalComponent } from '../delete-hero-modal/delete-hero-modal.component';
 
 const SNACK_BAR_DURATION_IN_SG = 2;
 export const LG_COLUMNS = ['name', 'gender', 'isHuman', 'superPowers', 'team', 'options'];
@@ -73,9 +74,14 @@ export class HeroesListComponent implements OnChanges, OnInit, OnDestroy {
   deleteItem(id: string): void {
     this.deleteHeroSubscription = this.heroesService.deleteHero(id)
       .subscribe((resp: any) => {
-        this.showMessage('Héroe borrado correctamente');    
-        this.initializePagination();
-        this.getHeroes();
+        const dialogRef = this.dialog.open(DeleteHeroModalComponent);
+        dialogRef.afterClosed().subscribe((borrar: boolean) => {
+          if (borrar) {
+            this.showMessage('Héroe borrado correctamente');    
+            this.initializePagination();
+            this.getHeroes();
+          } 
+        });
       });
   }
 

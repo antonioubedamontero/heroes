@@ -1,0 +1,19 @@
+<div>
+    <strong mat-dialog-title fxLayout="row" fxLayoutGap="10px" fxLayout="center center">
+        <mat-icon color="warn" fontIcon="error_outline"></mat-icon>        
+        <span>¿Está seguro de querer borrar el héroe?</span>
+    </strong>
+    <div mat-dialog-content>
+      <div fxLayout="row" fxLayoutAlign="center center">
+        Si lo borras, no podrás volver a recuperarlo.
+      </div>
+    </div>
+    <div class="padding-top-20" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+      <button id="cancelButton" mat-button [mat-dialog-close]="false">
+        Cancelar
+      </button>
+      <button id="deleteButton" mat-button color="warn" [mat-dialog-close]="true" cdkFocusInitial>
+        Borrar
+      </button>
+    </div>
+</div>
