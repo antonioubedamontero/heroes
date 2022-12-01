@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
-const SNACK_BAR_DURATION_IN_SG = 2;
+export const SNACK_BAR_DURATION_IN_SG = 2;
 
 @Component({
   selector: 'app-new-hero',
