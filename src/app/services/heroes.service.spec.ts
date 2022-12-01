@@ -85,4 +85,13 @@ describe('- HeroesService (Service that consumes Heroes API Rest)', () => {
 
     expect(httpPostSpy).toHaveBeenCalledWith(`${baseUrl}/heroes`, newHero);
   });
+
+  it('✔️ verifyIfExistsByName retrieve is an hero exists', () => {
+    const httpGetSpy = spyOn(http, 'get');
+    const hero = mock.newHero as unknown as NewHero;
+
+    service.verifyIfExistsByName(hero.name);
+
+    expect(httpGetSpy).toHaveBeenCalledWith(`${baseUrl}/heroes/name/${hero.name}/verify`);
+  });
 });

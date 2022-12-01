@@ -10,9 +10,17 @@
         </button>
     </mat-form-field>
       
-    <button id="filter-button" class="filter-button" mat-raised-button color="primary"
+    <button id="filter-button" class="buttons" mat-raised-button color="primary"
         [disabled]="filter.length === 0"
         (click)="doFilter()">
-        Filtrar
+        <mat-icon fontIcon="filter_alt"></mat-icon>
+    </button>
+
+    <button id="add-heroe-button" class="buttons" mat-raised-button
+        (click)="navigateToNewHeroPage()">
+        <div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="center center">
+            <mat-icon fontIcon="add"></mat-icon>
+            Héroe
+        </div>
     </button>
 </div>

@@ -5,7 +5,7 @@ import { environment as env } from '../../environments/environment';
 import { HEROES_DATA_MOCK as mock } from '../mocks/heroes.data.mock';
 
 import { HeroModified } from '../interfaces/hero-modified';
-import { Hero, NewHero, PageList, Pagination } from '../interfaces';
+import { ExistsHeroReponse, Hero, NewHero, PageList, Pagination } from '../interfaces';
 import { HeroesServiceListImpl } from './heroes.service.list.impl';
 
 const baseUrl = env.baseUrl;
@@ -119,5 +119,23 @@ describe('- HeroesServiceListImpl (Service implementation with list that consume
             expect(service.heroes.length).toBe(13);
             done();
     });
+  });
+
+  describe('- verifyIfExistsByName can verify..', () => {
+    it('✔️ if an hero exists', () => {
+      service.verifyIfExistsByName('héroe 3')
+        .subscribe((resp: ExistsHeroReponse) => {
+          expect(resp.exists).toBeTrue();
+        });
+    })
+  });
+
+  describe('- verifyIfExistsByName can verify..', () => {
+    it('✔️ if an hero not exists', () => {
+      service.verifyIfExistsByName('héroe 99')
+        .subscribe((resp: ExistsHeroReponse) => {
+          expect(resp.exists).toBeFalse();
+        });
+    })
   });
 });

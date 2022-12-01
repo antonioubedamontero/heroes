@@ -241,5 +241,52 @@
         "x": 1130,
         "y": 600,
         "wires": []
+    },
+    {
+        "id": "f54c064ac221d0df",
+        "type": "function",
+        "z": "47cafbbe51e2b5e6",
+        "name": "",
+        "func": "// const id = msg.req.params.name;\nmsg.payload={\n    exists: true\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 700,
+        "y": 700,
+        "wires": [
+            [
+                "48886b1b8f8a987e"
+            ]
+        ]
+    },
+    {
+        "id": "a0e02ff9b23d5340",
+        "type": "http in",
+        "z": "47cafbbe51e2b5e6",
+        "name": "GET /heroes/name/:name/verify",
+        "url": "/heroes/name/:name/verify",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 350,
+        "y": 700,
+        "wires": [
+            [
+                "f54c064ac221d0df"
+            ]
+        ]
+    },
+    {
+        "id": "48886b1b8f8a987e",
+        "type": "http response",
+        "z": "47cafbbe51e2b5e6",
+        "name": "Response OK",
+        "statusCode": "200",
+        "headers": {},
+        "x": 1120,
+        "y": 700,
+        "wires": []
     }
 ]

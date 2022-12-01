@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Hero, HeroModified, NewHero, PageList, Pagination } from '../interfaces';
+import { ExistsHeroReponse, Hero, HeroModified, NewHero, PageList,
+  Pagination } from '../interfaces';
 import { HEROES_DATA_MOCK as mock } from '../mocks/heroes.data.mock';
 import { HeroesService } from './heroes.service';
 import { Md5 } from 'ts-md5';
@@ -60,12 +61,17 @@ export class HeroesServiceListImpl extends HeroesService{
     return of(newHero);
   }
 
+  override verifyIfExistsByName = (heroName: string): Observable<ExistsHeroReponse> => {
+    const findHero = this.heroes.find((hero: Hero) => hero.name === heroName);
+    return findHero ? of({exists: true}) : of({exists: false});
+  }
+
   private loadFakeData(): Hero[] {
     const hero = mock.hero as unknown as Hero;
     return [
       { ...hero, name: 'héroe 1', id: Md5.hashStr('héroe 1') },
       { ...hero, name: 'héroe 2', id: Md5.hashStr('héroe 2') },
-      { ...hero, name: 'héro 3', id: Md5.hashStr('héro 3') },
+      { ...hero, name: 'héroe 3', id: Md5.hashStr('héroe 3') },
       { ...hero, name: 'héroe 4', id: Md5.hashStr('héroe 4') },
       { ...hero, name: 'héroe 5', id: Md5.hashStr('héroe 5') },
       { ...hero, name: 'héroe 6', id: Md5.hashStr('héroe 6') },

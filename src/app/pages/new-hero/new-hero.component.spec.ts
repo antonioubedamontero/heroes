@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NewHeroComponent } from './new-hero.component';
+import { BaseModule } from '../../base/base.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('- NewHeroComponent (Page for add a new hero)', () => {
   let component: NewHeroComponent;
@@ -8,7 +10,13 @@ describe('- NewHeroComponent (Page for add a new hero)', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NewHeroComponent ]
+      declarations: [ 
+        NewHeroComponent 
+      ],
+      imports: [
+        BaseModule,
+        BrowserAnimationsModule
+      ]
     })
     .compileComponents();
 
