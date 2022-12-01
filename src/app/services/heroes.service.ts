@@ -3,7 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { environment as env } from '../../environments/environment';
 
 import { Observable } from 'rxjs';
-import { Hero, HeroModified, NewHero, PageList, Pagination } from '../interfaces';
+import { Hero, HeroModified, NewHero, PageList, Pagination,
+  ExistsHeroReponse } from '../interfaces';
 
 const baseUrl = env.baseUrl;
 
@@ -35,5 +36,9 @@ export class HeroesService {
 
   createHero = (newHero: NewHero): Observable<Hero> => {
     return this.http.post<Hero>(`${baseUrl}/heroes`, newHero);
+  }
+
+  verifyIfExistsByName = (heroName: string): Observable<ExistsHeroReponse> => {
+    return this.http.get<ExistsHeroReponse>(`${baseUrl}/heroes/name/${heroName}/verify`);
   }
 }

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-hero-filter',
@@ -9,7 +10,7 @@ export class HeroFilterComponent {
   filter!: string;
   @Output() filterEmitted = new EventEmitter<string>();
 
-  constructor() { 
+  constructor(private router: Router) { 
     this.resetFilter();
   }
 
@@ -19,5 +20,9 @@ export class HeroFilterComponent {
 
   doFilter(): void {
     this.filterEmitted.emit(this.filter);
+  }
+
+  navigateToNewHeroPage(): void {
+    this.router.navigateByUrl('/heroes/new');
   }
 }

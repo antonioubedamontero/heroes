@@ -132,6 +132,28 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "GET Verify if exists an hero by its name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1880/heroes/name/magneto/verify",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1880",
+					"path": [
+						"heroes",
+						"name",
+						"magneto",
+						"verify"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

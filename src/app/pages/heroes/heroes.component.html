@@ -1,4 +1,7 @@
 <div class="container">
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <h1>Listado de héroes</h1>
+    </div>
     <app-hero-filter (filterEmitted)="doFilter($event)"></app-hero-filter>
     <app-heroes-list [filterText]="filterText"></app-heroes-list>
 </div>
