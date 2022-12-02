@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 const SNACK_BAR_DURATION_IN_SG = 2;
 export const LG_COLUMNS = ['name', 'gender', 'isHuman', 'superPowers', 'team', 'options'];
 export const MD_COLUMNS = ['name', 'gender', 'superPowers', 'team', 'options'];
-export const SM_COLUMNS = ['name', 'superPowers', 'team', 'options'];
+export const SM_COLUMNS = ['name', 'superPowers', 'options'];
 export const XS_COLUMNS = ['name', 'options'];
 
 @Component({

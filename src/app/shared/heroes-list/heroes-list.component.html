@@ -1,37 +1,62 @@
 <div fxLayout="column">
   <mat-table id="heroesTable" (window:resize)="resizeTable()" 
       [dataSource]="heroes" class="mat-elevation-z2">
-      <ng-container *ngFor="let columnName of displayedColumns" 
-        [matColumnDef]="columnName">
-        <mat-header-cell *matHeaderCellDef>
-          <div *ngIf="columnName === 'options'"></div>
 
-          <div *ngIf="columnName !== 'options'">
-            {{ columnName | heroesPipe }} 
-          </div>
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef fxFlex.xs="30" fxFlex.sm="27.5" fxFlex.md="17.5" fxFlex.gt-md="16.4">
+          Nombre
         </mat-header-cell>
-        <mat-cell *matCellDef="let element">
-          <div *ngIf="columnName !== 'superPowers' &&
-                      columnName !== 'options' &&
-                      columnName !== 'isHuman'">
-            {{ element[columnName] }}
-          </div>
+        <mat-cell *matCellDef="let element" fxFlex.xs="30" fxFlex.sm="27.5" fxFlex.md="17.5" fxFlex.gt-md="16.4">
+          {{ element.name }}
+        </mat-cell>
+      </ng-container>
 
-          <div *ngIf="columnName === 'isHuman'">
-            {{ element[columnName] ? 'Sí' : 'No' }}
-          </div>
+      <ng-container matColumnDef="gender">
+        <mat-header-cell *matHeaderCellDef fxFlex.md="17.5" fxFlex.gt-md="16.4">
+          Género
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element" fxFlex.md="17.5" fxFlex.gt-md="16.4">
+          {{ element.gender }}
+        </mat-cell>
+      </ng-container>
 
-          <div *ngIf="columnName === 'superPowers'">
-            <ul>
-              <li *ngFor="let superPower of element['superPowers']">
-                {{ superPower }}
-              </li>
-            </ul>
-          </div>
+      <ng-container matColumnDef="isHuman">
+        <mat-header-cell *matHeaderCellDef fxFlex.gt-md="16.4">
+          Humano
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element" fxFlex.gt-md="16.4">
+          {{ element.isHuman ? 'Sí' : 'No' }} 
+        </mat-cell>
+      </ng-container>
 
-          <div fxLayout="row" fxLayoutGap="15px" 
-            *ngIf="columnName === 'options'">
+      <ng-container matColumnDef="superPowers">
+        <mat-header-cell *matHeaderCellDef fxFlex.sm="27.5" fxFlex.md="17.5" fxFlex.gt-md="16.4">
+          Súper Podéres
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element" fxFlex.sm="27.5" fxFlex.md="17.5" fxFlex.gt-md="16.4">
+          <ul>
+            <li *ngFor="let superPower of element.superPowers">
+              {{ superPower }}
+            </li>
+          </ul> 
+        </mat-cell>
+      </ng-container>
 
+      <ng-container matColumnDef="team">
+        <mat-header-cell *matHeaderCellDef fxFlex.md="17.5" fxFlex.gt-md="16.4">
+          Equipo
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element" fxFlex.md="17.5" fxFlex.gt-md="16.4">
+          {{ element.team }}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="options">
+        <mat-header-cell *matHeaderCellDef fxFlex.xs="70" fxFlex.sm="45" fxFlex.md="30" fxFlex.gt-md="18">
+          Opciones
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element" fxFlex.xs="70" fxFlex.sm="45" fxFlex.md="30" fxFlex.gt-md="18"> 
+          <div fxLayout="row" fxLayoutGap="15px">
             <button mat-raised-button
               (click)="showHero(element.id)">
               <mat-icon>zoom_in</mat-icon>
