@@ -11,7 +11,7 @@
                 <div fxLayout="column">
                     <mat-label>* Nombre</mat-label>
                     <mat-form-field appearance="outline">
-                        <input matInput formControlName="name"
+                        <input appCapitalize matInput formControlName="name"
                             placeholder="Nombre del héroe">
                         <mat-error *ngIf="hasErrors('name')">
                             {{ getErrorMessages('name', 'Nombre') }}
