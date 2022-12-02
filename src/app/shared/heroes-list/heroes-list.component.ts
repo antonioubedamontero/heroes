@@ -67,11 +67,11 @@ export class HeroesListComponent implements OnChanges, OnInit, OnDestroy {
     });
   }
 
-  editItem(hero: Hero): void {
-    console.log('** edit hero', hero);
+  editHero(id: string): void {
+    // TODO
   }
 
-  deleteItem(id: string): void {
+  deleteHero(id: string): void {
     this.deleteHeroSubscription = this.heroesService.deleteHero(id)
       .subscribe((resp: any) => {
         const dialogRef = this.dialog.open(DeleteHeroModalComponent);

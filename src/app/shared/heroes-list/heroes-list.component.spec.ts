@@ -108,7 +108,7 @@ describe('- HeroesListComponent (Show heroes list)', () => {
         it('✔️ ... and says yes to confirm, delete endpoint is called, reaload heroesList and send a message', () => {
           const showMessageSpy = spyOn(component, 'showMessage').and.callThrough();
           const id = '1';
-          component.deleteItem(id);
+          component.deleteHero(id);
           expect(deleteHeroSpy).toHaveBeenCalledWith(id);
           expect(getHeroesSpy).toHaveBeenCalledTimes(2);
           expect(showMessageSpy).toHaveBeenCalledWith('Héroe borrado correctamente');
@@ -118,7 +118,7 @@ describe('- HeroesListComponent (Show heroes list)', () => {
           setMatDialogCloseValue(false);
           const showMessageSpy = spyOn(component, 'showMessage').and.callThrough();
           const id = '1';
-          component.deleteItem(id);
+          component.deleteHero(id);
           expect(deleteHeroSpy).not.toHaveBeenCalled();
           expect(getHeroesSpy).toHaveBeenCalledTimes(1);
           expect(showMessageSpy).not.toHaveBeenCalled();

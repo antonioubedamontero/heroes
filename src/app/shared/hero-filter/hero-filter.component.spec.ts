@@ -66,16 +66,6 @@ describe('- HeroFilterComponent (Input for filter heroes list)', () => {
     it('✔️ Component has a button to do filtering', () => {
       expect(buttonFilterHtml).toBeTruthy();
     });
-    
-    it('✔️ Filter button is only enabled when there is a filter text', () =>{
-      component.filter = 'some text';
-      fixture.detectChanges();
-      expect(buttonFilterHtml.getAttribute('disabled')).toBeFalsy();
-
-      component.filter = '';
-      fixture.detectChanges();
-      expect(buttonFilterHtml.getAttribute('disabled')).toBeTruthy();
-    });
 
     it('✔️ If filter button is pressed, emits an event with filter written', () => {
       const filterEmittedMock = spyOn(component.filterEmitted, 'emit'); 
