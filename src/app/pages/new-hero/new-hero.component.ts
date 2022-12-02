@@ -105,7 +105,6 @@ export class NewHeroComponent implements OnDestroy{
       case 'superPowersArrayIsEmpty':
         return 'Debe informar, al menos, un súper poder'
       default:
-        console.log('error type', errorType);
         return 'Error no definido';
     }
   }

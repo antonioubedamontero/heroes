@@ -1,1 +1,102 @@
-<p>edit-hero</p>
+<div *ngIf="hero" class="full-width" fxLayout="row" 
+    fxLayoutAlign="center center">
+    <mat-card fxFlex.xs="95" fxFlex.gt-xs="70">
+        <mat-card-content>
+            <div fxLayout="row" fxLayoutAlign="center center">
+                <h1>Modificar héroe</h1>
+            </div>
+            <form [formGroup]="formHero" (ngSubmit)="sendForm()"
+                autocomplete="off" fxLayout="column" fxLayoutGap="5px">
+    
+                <div fxLayout="column">
+                    <mat-label>* Nombre</mat-label>
+                    <mat-form-field appearance="outline">
+                        <input matInput formControlName="name"
+                            placeholder="Nombre del héroe">
+                        <mat-error *ngIf="hasErrors('name')">
+                            {{ getErrorMessages('name', 'Nombre') }}
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div fxLayout="column">
+                    <mat-label>* Género</mat-label>
+                    <mat-form-field appearance="outline">
+                        <mat-select formControlName="gender">
+                            <mat-option *ngFor="let gender of genders"
+                                [value]="gender">{{ gender }}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="hasErrors('gender')">
+                            {{ getErrorMessages('gender', 'Género') }}
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div fxLayout="column">
+                    <mat-label>* Humano</mat-label>
+                    <mat-form-field appearance="outline">
+                        <mat-select formControlName="isHuman">
+                            <mat-option [value]="true">Sí</mat-option>
+                            <mat-option [value]="false">No</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="hasErrors('isHuman')">
+                            {{ getErrorMessages('isHuman', 'Humano') }}
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div fxLayout="column" class="super-powers-group" formArrayName="superPowers">
+                    <div fxLayout="row" fxLayoutGap="10px">
+                        <mat-label>* Súper Podéres</mat-label>
+                        <div>
+                            <button class="add-item-button" 
+                                    mat-raised-button color="primary" 
+                                    (click)="addSuperPower()" type="button">
+                                <mat-icon fontIcon="add">
+                                </mat-icon>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div *ngFor="let superPower of superPowers.controls; let i=index"
+                        fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="10px">
+                        <mat-form-field fxFlex="80" appearance="outline">
+                            <input matInput [formControlName]="i" 
+                                placeholder="introduzca súper poder">
+                        </mat-form-field>          
+                        <div fxFlex>
+                            <button class="delete-item-buttom" 
+                                mat-raised-button color="warn" 
+                                (click)="deleteSuperPower(i)" type="button">
+                                <mat-icon fontIcon="delete_outline">
+                                </mat-icon>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div *ngIf="hasErrors('superPowers')">
+                        <mat-error>
+                            {{ getErrorMessages('superPowers', 'Súper Podéres') }}
+                        </mat-error>
+                    </div>
+                </div>
+
+                <div fxLayout="column">
+                    <mat-label>Equipo</mat-label>
+                    <mat-form-field appearance="outline">
+                        <input matInput formControlName="team" 
+                            placeholder="Equipo del Héroe">
+                    </mat-form-field>      
+                </div>
+
+                <div fxLayout="row" fxLayoutAlign="center center">
+                    <button fxFlex="30" 
+                        type="submit" mat-raised-button color="primary">
+                        Modificar héroe
+                    </button>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

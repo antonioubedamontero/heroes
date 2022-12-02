@@ -9,6 +9,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { HeroDetailComponent } from '../hero-detail/hero-detail.component';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteHeroModalComponent } from '../delete-hero-modal/delete-hero-modal.component';
+import { Router } from '@angular/router';
 
 const SNACK_BAR_DURATION_IN_SG = 2;
 export const LG_COLUMNS = ['name', 'gender', 'isHuman', 'superPowers', 'team', 'options'];
@@ -34,7 +35,8 @@ export class HeroesListComponent implements OnChanges, OnInit, OnDestroy {
 
   constructor(private dialog: MatDialog,
               private snackBar: MatSnackBar,
-              private heroesService: HeroesServiceListImpl) { }
+              private heroesService: HeroesServiceListImpl,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.resizeTable();
@@ -42,7 +44,6 @@ export class HeroesListComponent implements OnChanges, OnInit, OnDestroy {
 
   ngOnChanges(changes: SimpleChanges): void {
     // const searchTerm = changes['searchTerm'].currentValue;
-    // console.log('** on changes was triggered with', this.filterText);
     this.initializePagination();
     this.getHeroes();
   }
@@ -68,7 +69,7 @@ export class HeroesListComponent implements OnChanges, OnInit, OnDestroy {
   }
 
   editHero(id: string): void {
-    // TODO
+    this.router.navigate(['/heroes', id, 'edit']);
   }
 
   deleteHero(id: string): void {

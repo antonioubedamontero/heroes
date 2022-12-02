@@ -12,6 +12,7 @@ import { Hero, PageList } from '../../interfaces';
 import { SimpleChange } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatDialogMock, setMatDialogCloseValue } from '../../mocks/mat-dialog-mock';
+import { Router } from '@angular/router';
 
 describe('- HeroesListComponent (Show heroes list)', () => {
   describe(' - General Tests: ', () => {
@@ -22,6 +23,8 @@ describe('- HeroesListComponent (Show heroes list)', () => {
       let deleteHeroSpy: any;
       let getWindowInnerWidthSpy: any;
       let dialog: MatDialog;
+      let router: Router;
+      let routerNavigateSpy: any;
 
       beforeEach(async () => {
         await TestBed.configureTestingModule({
@@ -47,6 +50,8 @@ describe('- HeroesListComponent (Show heroes list)', () => {
         getHeroesSpy = spyOn(service, 'getHeroes').and.returnValue(of(mock.pageList as unknown as PageList));
         deleteHeroSpy = spyOn(service, 'deleteHero').and.callThrough();
         getWindowInnerWidthSpy = spyOn(component, 'getWindowInnerWidth');
+        router = TestBed.inject(Router);
+        routerNavigateSpy = spyOn(router, 'navigate');
         dialog = TestBed.inject(MatDialog);
         setMatDialogCloseValue(true);
 
@@ -125,6 +130,12 @@ describe('- HeroesListComponent (Show heroes list)', () => {
         });
       })
 
+      it('✔️ When press modify an hero, it navigates to hero modify page', () => {
+        const id = '1';
+        component.editHero(id);
+        expect(routerNavigateSpy).toHaveBeenCalledWith(['/heroes', id, 'edit']);      
+      });
+
       xit('✔️ If receives a search term, service is called with that search term', (done) => {
         component.ngOnChanges({
           filterText: new SimpleChange('', 'mag', false)
@@ -141,6 +152,8 @@ describe('- HeroesListComponent (Show heroes list)', () => {
     let component: HeroesListComponent;
     let fixture: ComponentFixture<HeroesListComponent>;
     let getWindowInnerWidthSpy: any;
+    let router: Router;
+    let routerNavigateSpy: any;
 
     beforeEach(async () => {
       await TestBed.configureTestingModule({
@@ -163,6 +176,8 @@ describe('- HeroesListComponent (Show heroes list)', () => {
       fixture = TestBed.createComponent(HeroesListComponent);
       component = fixture.componentInstance;
       getWindowInnerWidthSpy = spyOn(component, 'getWindowInnerWidth');
+      router = TestBed.inject(Router);
+      routerNavigateSpy = spyOn(router, 'navigate');
 
       // ngOnChanges must be triggered manually, because it relies on view changes
       component.ngOnChanges({
