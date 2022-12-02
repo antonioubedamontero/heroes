@@ -1,5 +1,5 @@
 import { AbstractControl, AsyncValidatorFn, ValidationErrors, FormArray } from '@angular/forms';
-import { map, Observable } from "rxjs";
+import { map, Observable, of } from "rxjs";
 import { ExistsHeroReponse } from "../interfaces";
 import { HeroesServiceListImpl } from "../services/heroes.service.list.impl";
 
@@ -18,6 +18,10 @@ export class HeroesValidators {
 
     static userExistsValidator(service: HeroesServiceListImpl): AsyncValidatorFn {
         return (control: AbstractControl): Observable<ValidationErrors | null> => {
+            if (control.pristine) {
+                return of(null);
+            }
+
             return service.verifyIfExistsByName(control.value)
                 .pipe(
                     map((resp: ExistsHeroReponse) => {

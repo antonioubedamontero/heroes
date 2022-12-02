@@ -35,6 +35,7 @@ describe('- HeroesValidators (Custom validators)', () => {
                 fb.control('luchar')
             ], HeroesValidators.containsSuperPowersValidator),
           });
+        heroForm.get('name')?.markAsDirty();
     });
 
     it('✔️ HeroesValidators is created successfully', () => {

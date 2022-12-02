@@ -65,6 +65,7 @@ export class EditHeroComponent implements OnInit, OnDestroy {
     hero.superPowers.forEach((superPower: string) => {
       this.addSuperPower(superPower)
     });
+    this.formHero.get('name')?.markAsPristine();
   }
 
   sendForm(): void {
