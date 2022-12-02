@@ -7,6 +7,7 @@ import { HeroesComponent } from './heroes/heroes.component';
 import { NewHeroComponent } from './new-hero/new-hero.component';
 import { EditHeroComponent } from './edit-hero/edit-hero.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { DirectivesModule } from '../directives/directives.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
   imports: [
     CommonModule,
     BaseModule,
-    SharedModule
+    SharedModule,
+    DirectivesModule
   ],
   exports: [
     HeroesComponent,
